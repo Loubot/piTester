@@ -18,7 +18,7 @@ while True:
     response = urllib2.urlopen(req)
     the_page = response.read()
 
-    print 'logTemp ' + the_page
+    print 'logTemp ' + str(roomNo) +' ' + the_page
 
     if roomNo >= 4:
         roomNo = 1
