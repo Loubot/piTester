@@ -12,31 +12,20 @@
 import urllib2
 import urllib
 
-#Set the desired temperature. 
-url = "http://localhost:3000/setTemp.json"
-#The array below reads [room, reading]
-values = {'data[]': [1, 100]}
+def readTemp(roomNo):
 
-data = urllib.urlencode(values, True)
-print(data)
-req = urllib2.Request(url, data)
-response = urllib2.urlopen(req)
-the_page = response.read()
+	#Read the desired temp of a room
+	data = {}
 
-print "setTemp " + the_page
+	data['data'] = roomNo #'room1'
+	urlValues = urllib.urlencode(data)
 
+	url = "http://localhost:3000/getTemp.json"
 
-#Read the desired temp of a room
-data = {}
+	full_url = url + '?' + urlValues
+	print(full_url)
 
-data['data'] = 'room1'
-urlValues = urllib.urlencode(data)
+	#you can read back the temp with the line below
+	data = urllib2.urlopen(full_url) #data will equal temp set on showRooms page
 
-url = "http://localhost:3000/getTemp.json"
-
-full_url = url + '?' + urlValues
-print(full_url)
-#you can read back the temp with the line below
-data = urllib2.urlopen(full_url)
-
-print(data.read())
+	print(data.read())

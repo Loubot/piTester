@@ -2,29 +2,20 @@ import urllib
 import urllib2
 import time
 
-roomNo = 1
-reading = 20
+def logTemps(roomNo, reading):
+  url = 'http://localhost:3000/logTemp.json'
 
-while True:
+  #the array below reads [room, temp reading]
+  values = { 'data[]': [roomNo, reading] }
+  data = urllib.urlencode(values, True)
+  print data
 
-    url = 'http://localhost:3000/logTemp.json'
+  req = urllib2.Request(url,data)
+  response = urllib2.urlopen(req)
+  the_page = response.read() #reads server response e.g. status 200
 
-    #the array below reads [room, temp reading]
-    values = { 'data[]': [roomNo, reading] }
-    data = urllib.urlencode(values, True)
-    print data
+  print 'logTemp ' + str(roomNo) +' ' + the_page
 
-    req = urllib2.Request(url,data)
-    response = urllib2.urlopen(req)
-    the_page = response.read()
+  
 
-    print 'logTemp ' + str(roomNo) +' ' + the_page
-
-    if roomNo >= 4:
-        roomNo = 1
-    else:
-        roomNo += 1
-
-    reading += 1
-
-    time.sleep(5)
+    
