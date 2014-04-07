@@ -46,4 +46,4 @@ def logTemps(roomNo, reading):
 
 	print 'logTemp ' + str(roomNo) +' ' + the_page
 
-print(readTemp(2))
+#print(readTemp(2))
