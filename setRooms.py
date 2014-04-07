@@ -18,7 +18,7 @@ def readTemp(roomNo):
 	data = {}
 
 	roomNo = 'room' + str(roomNo) #need to add number to end of this string
-        
+	    
 	data['data'] = roomNo #'room1'
 	urlValues = urllib.urlencode(data)
 
@@ -33,17 +33,17 @@ def readTemp(roomNo):
 	print(data.read())
 
 def logTemps(roomNo, reading):
-  url = 'http://localhost:3000/logTemp.json'
+	url = 'http://localhost:3000/logTemp.json'
 
-  #the array below reads [room, temp reading]
-  values = { 'data[]': [roomNo, reading] }
-  data = urllib.urlencode(values, True)
-  print data
+	#the array below reads [room, temp reading]
+	values = { 'data[]': [roomNo, reading] }
+	data = urllib.urlencode(values, True)
+	print data
 
-  req = urllib2.Request(url,data)
-  response = urllib2.urlopen(req)
-  the_page = response.read() #reads server response e.g. status 200
+	req = urllib2.Request(url,data)
+	response = urllib2.urlopen(req)
+	the_page = response.read() #reads server response e.g. status 200
 
-  print 'logTemp ' + str(roomNo) +' ' + the_page
+	print 'logTemp ' + str(roomNo) +' ' + the_page
 
 print(readTemp(2))
