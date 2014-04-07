@@ -19,7 +19,7 @@ def readTemp(roomNo):
 
 	roomNo = 'room' + str(roomNo) #need to add number to end of this string
 	    
-	data['data'] = roomNo #'room1'
+	data['data'] = roomNo #e.g. 'room1'
 	urlValues = urllib.urlencode(data)
 
 	url = "http://localhost:3000/getTemp.json"
