@@ -16,8 +16,8 @@ import subprocess
 
 
 d= os.chdir('C:\\Users\\angell\\Documents\\Rails\\RasPiServer\\')
-p = subprocess.call(["thin", "start"], shell=True)
-print(p)
+p = subprocess.Popen(["thin", "start"], shell=True)
+
 def readTemp(roomNo):
 
 	#Read the desired temp of a room
@@ -52,4 +52,4 @@ def logTemps(roomNo, reading):
 
 	print 'logTemp ' + str(roomNo) +' ' + the_page
 
-#print(readTemp(2))
+print(readTemp(2))
