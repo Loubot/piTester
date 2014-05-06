@@ -15,15 +15,14 @@ import os
 import subprocess
 
 
-d= os.chdir('C:\\Users\\angell\\Documents\\Rails\\RasPiServer\\')
-p = subprocess.Popen(["thin", "start"], shell=True)
+os.chdir('C:\\Users\\angell\\Documents\\Rails\\RasPiServer\\')
+subprocess.Popen(["thin", "start"], shell=True)
 checker = True
 
 while checker:
         try:
                 data = urllib2.urlopen('http://localhost:3000/checkOk')
-                x =  data.read()
-                if x == 'ok':
+                if data.read() == 'ok':
                         checker = False
                 
         except :
