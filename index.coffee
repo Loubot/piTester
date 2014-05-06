@@ -1,5 +1,5 @@
 $(document).ready ->
-  roomNo = 1
+  roomNo = 5
   temp = 20
   
   run = () ->
@@ -8,13 +8,13 @@ $(document).ready ->
       data: { data: [roomNo, temp] }
       type: 'post'
     
-    if roomNo >= 4
-      roomNo = 1
-    else 
-      roomNo += 1
-    temp += 1
+    # if roomNo >= 4
+    #   roomNo = 1
+    # else 
+    #   roomNo += 1
+    # temp += 1
     console.log("run was called!")
-  setInterval(run, 3000)
+  setInterval(run, 500)
   
 
 

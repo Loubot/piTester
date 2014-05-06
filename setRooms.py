@@ -11,14 +11,20 @@
 
 import urllib2
 import urllib
+import os
+import subprocess
 
+
+d= os.chdir('C:\\Users\\angell\\Documents\\Rails\\RasPiServer\\')
+p = subprocess.call(["thin", "start"], shell=True)
+print(p)
 def readTemp(roomNo):
 
 	#Read the desired temp of a room
 	data = {}
 
 	roomNo = 'room' + str(roomNo) #need to add number to end of this string
-	    
+
 	data['data'] = roomNo #e.g. 'room1'
 	urlValues = urllib.urlencode(data)
 
