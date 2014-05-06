@@ -17,6 +17,17 @@ import subprocess
 
 d= os.chdir('C:\\Users\\angell\\Documents\\Rails\\RasPiServer\\')
 p = subprocess.Popen(["thin", "start"], shell=True)
+checker = True
+
+while checker:
+        try:
+                data = urllib2.urlopen('http://localhost:3000/checkOk')
+                x =  data.read()
+                if x == 'ok':
+                        checker = False
+                
+        except :
+                print 'Server not ready yet!'
 
 def readTemp(roomNo):
 
@@ -49,7 +60,8 @@ def logTemps(roomNo, reading):
 	req = urllib2.Request(url,data)
 	response = urllib2.urlopen(req)
 	the_page = response.read() #reads server response e.g. status 200
-
+	print(the_page)
 	print 'logTemp ' + str(roomNo) +' ' + the_page
 
 print(readTemp(2))
+logTemps(1, 23)
