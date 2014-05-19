@@ -1,24 +1,23 @@
-#-------------------------------------------------------------------------------
-# Name:        module1
-# Purpose:
-#
-# Author:      angell
-#
-# Created:     03/03/2014
-# Copyright:   (c) angell 2014
-# Licence:     <your licence>
-#-------------------------------------------------------------------------------
+#!/usr/bin/env python 
 
-import urllib2
-import urllib
+
 import os
+import urllib
+import urllib2
+import time
+
 import subprocess
 
 
-os.chdir('C:\\Users\\angell\\Documents\\Rails\\RasPiServer\\')
-subprocess.Popen(["thin", "start"], shell=True)
-checker = True
 
+os.chdir('/home/loubot/Desktop/piTester')
+os.system('pwd')
+x = subprocess.Popen('./startRails.py')
+
+
+print x
+
+checker= True
 while checker:
         try:
                 data = urllib2.urlopen('http://localhost:3000/checkOk')
@@ -27,6 +26,10 @@ while checker:
                 
         except :
                 print 'Server not ready yet!'
+
+##        print a
+##        print d
+        time.sleep(6)
 
 def readTemp(roomNo):
 
@@ -64,3 +67,6 @@ def logTemps(roomNo, reading):
 
 print(readTemp(2))
 logTemps(1, 23)
+
+
+
