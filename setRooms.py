@@ -14,6 +14,7 @@ os.chdir('/home/loubot/Desktop/piTester')
 os.system('pwd')
 x = subprocess.Popen('./startRails.py')
 
+print 'pid = ' + str(x.pid+3)
 
 print x
 
@@ -67,6 +68,8 @@ def logTemps(roomNo, reading):
 
 print(readTemp(2))
 logTemps(1, 23)
+
+
 
 
 
